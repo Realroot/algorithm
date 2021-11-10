@@ -5,24 +5,31 @@ import java.util.Stack;
 
 public class B6198 {
 	public static void main(String[] args) {
-		Stack<Integer> stack = new Stack<>();
+		Stack<Integer> stack = new Stack<Integer>();
 		Scanner sc = new Scanner(System.in);
 		int length = sc.nextInt();
+		int[] arr = new int[length];
 		
 		for(int i=0;i<length;i++) {
-		   int temp = sc.nextInt();
-			stack.push(temp);
+		  arr[i] = sc.nextInt();
 		}
+		
 		int sum =0;
 		for(int i=0;i<length;i++) {
-			for(int j=i+1;j<length;j++) {
-				if(stack.get(i)<stack.get(j)) {
-					break;
+		  
+			while(!stack.empty()) {
+				if(stack.peek() <= arr[i]) {
+					stack.pop();
 				}else {
-					sum++;
+					break;
 				}
 			}
+			sum = sum + stack.size();
+			stack.push(arr[i]);
 		}
-		System.out.println(sum);
+		 StringBuilder sb = new StringBuilder();
+		 sb.append(sum);
+		 System.out.println(sb);		 
 	}
 }
+ 
