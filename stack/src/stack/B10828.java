@@ -1,24 +1,24 @@
 package stack;
 
-import java.util.Scanner;
-import java.util.Stack;
+import java.io.*;
+import java.util.*;
 
 public class B10828 {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		Stack<Integer> stack = new Stack<Integer>();
-		Scanner sc = new Scanner(System.in);
-		int length = sc.nextInt();
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st = null;
+		int length = Integer.parseInt(br.readLine());
+		
 		for (int i = 0; i < length; i++) {
-			String temp = sc.nextLine();
-			String[] behavior = temp.split(" ");
-		    int index = stack.size()-1;
-			switch(behavior[0]) {
+			st = new StringTokenizer(br.readLine(), " ");
+			switch(st.nextToken()) {
 			case "push": 
-			 stack.push(Integer.valueOf(behavior[1]));
+			 stack.push(Integer.parseInt(st.nextToken()));
 			 break;
 			 
 			case "pop":
-				if(index+1==0) {
+				if(stack.size()==0) {
 					System.out.println(-1);
 				}else {
 				System.out.println(stack.pop());
@@ -30,18 +30,19 @@ public class B10828 {
 				break;
 				
 			case "empty":
-				if(index+1 == 0) {
+				if(stack.isEmpty()) {
 					System.out.println(1);
 				}else {
 					System.out.println(0);
 				}
 				break;
 			case "top":
-				System.out.println(stack.get(index));
+				if(stack.isEmpty()) {
+					System.out.println(-1);
+				}else {
+					System.out.println(stack.peek());
+				}
 				break;
-			}
-			for(int j=0;j<stack.size();j++) {
-				System.out.println(stack.get(j));
 			}
 		}
 	}
