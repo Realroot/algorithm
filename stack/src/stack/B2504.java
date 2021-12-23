@@ -41,3 +41,5 @@ public class B2504 {
 		System.out.println(sum);
 	}
 }
+
+
