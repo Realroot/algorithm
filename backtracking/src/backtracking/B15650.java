@@ -26,10 +26,8 @@ public class B15650 {
 		}
 		
 		for(int i=n;i<=N;i++) {
-			
 				arr[k] =i;
 				sequence(k+1,i+1);
-			
 		}
 	}
 }
